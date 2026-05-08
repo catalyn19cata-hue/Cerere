@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Un Secret...</title>
+<title>Pentru tine 🤍</title>
 
 <style>
 
@@ -13,66 +13,148 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
-  overflow:hidden;
 
   background:
-    radial-gradient(circle at top,#3a0f2e,#090510 70%);
+    linear-gradient(180deg,#fff7fb,#ffeef8,#fef6ff);
 
-  font-family:Arial;
-  color:white;
-  text-align:center;
+  font-family: 'Segoe UI', sans-serif;
+  overflow:hidden;
 }
 
 .container{
+
   width:90%;
-  max-width:500px;
+  max-width:550px;
+
+  background:rgba(255,255,255,0.6);
+
+  backdrop-filter:blur(12px);
+
+  border-radius:30px;
+
+  padding:40px 30px;
+
+  text-align:center;
+
+  box-shadow:
+    0 10px 40px rgba(255,182,193,0.25);
+
 }
 
 h1{
-  font-size:40px;
-  margin-bottom:40px;
-
-  text-shadow:
-    0 0 10px #ff4dc4,
-    0 0 20px #ff0099;
+  color:#d86c9a;
+  font-size:42px;
+  margin-bottom:20px;
 }
 
-#message{
-  font-size:24px;
-  min-height:100px;
-  margin-bottom:40px;
-  transition:0.5s;
+#question{
+
+  font-size:26px;
+  color:#7d5a6b;
+
+  min-height:120px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  line-height:1.5;
+}
+
+.buttons{
+  display:flex;
+  gap:15px;
+  justify-content:center;
+  margin-top:30px;
 }
 
 button{
-  padding:18px 40px;
+
   border:none;
-  border-radius:20px;
+  border-radius:18px;
 
-  background:rgba(255,255,255,0.15);
-  color:white;
+  padding:16px 28px;
 
-  font-size:18px;
+  font-size:17px;
+
   cursor:pointer;
 
-  backdrop-filter:blur(10px);
+  background:white;
+
+  color:#c45d8d;
+
+  box-shadow:
+    0 5px 20px rgba(255,192,203,0.3);
 
   transition:0.3s;
 }
 
 button:hover{
-  transform:scale(1.08);
+  transform:scale(1.06);
 }
 
-.final{
-  font-size:60px;
-  animation:pulse 1.5s infinite;
+.final-photo{
+
+  width:220px;
+  height:220px;
+
+  object-fit:cover;
+
+  border-radius:25px;
+
+  margin-top:20px;
+
+  box-shadow:
+    0 10px 35px rgba(0,0,0,0.15);
+
+  animation:fade 2s;
 }
 
-@keyframes pulse{
-  0%{transform:scale(1);}
-  50%{transform:scale(1.2);}
-  100%{transform:scale(1);}
+.final-text{
+
+  margin-top:25px;
+
+  font-size:28px;
+
+  line-height:1.6;
+
+  color:#b14f80;
+
+  animation:fade 2s;
+}
+
+@keyframes fade{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.heart{
+
+  position:fixed;
+  color:#ffc1da;
+
+  animation:float 6s linear forwards;
+
+  pointer-events:none;
+}
+
+@keyframes float{
+
+  from{
+    transform:translateY(0);
+    opacity:1;
+  }
+
+  to{
+    transform:translateY(-120vh);
+    opacity:0;
+  }
 }
 
 </style>
@@ -82,52 +164,109 @@ button:hover{
 
 <div class="container">
 
-  <h1>Am un secret...</h1>
+  <h1>Dor nespus🤍</h1>
 
-  <div id="message">
-    Apasă dacă vrei să afli.
+  <div id="question">
+
+    Ești pregătită pentru câteva întrebări?
+
   </div>
 
-  <button onclick="nextStep()" id="btn">
-    Află
-  </button>
+  <div class="buttons">
+
+    <button onclick="nextQuestion()">
+      Da 💗
+    </button>
+
+  </div>
 
 </div>
 
 <script>
 
-const steps = [
+const questions = [
 
-"Totul a început cu emoții...",
-"A existat un moment special...",
-"A fost multă iubire acolo...",
-"A existat și un inel...",
-"Și cel mai important...",
-"EA A SPUS DA 💍"
+"Ți-e dor de momentele în care vorbeam ore întregi fără să ne plictisim? 🥺",
+
+"Ți-e dor de toate planurile și visele noastre? ✨",
+
+"Crezi că unele persoane rămân pentru totdeauna în sufletul nostru? 🤍",
+
+"Te-ai gândit vreodată cât de repede se schimbă viața? 🌸",
+
+"Și dacă ți-aș spune că s-a întâmplat ceva foarte important...? 💭"
 
 ];
 
 let index = 0;
 
-function nextStep(){
+function nextQuestion(){
 
-  const message = document.getElementById("message");
-  const btn = document.getElementById("btn");
+  const q = document.getElementById("question");
 
-  message.innerHTML = steps[index];
+  if(index < questions.length){
 
-  if(index === steps.length - 1){
+    q.innerHTML = questions[index];
 
-    message.innerHTML = `
-      <div class="final">💍</div>
-      <br>
-      Prietena ta a fost cerută în căsătorie.
-    `;
+    index++;
 
-    btn.style.display = "none";
+  }else{
+
+    showFinal();
+
   }
 
-  index++;
+}
+
+function showFinal(){
+
+  const container = document.querySelector(".container");
+
+  container.innerHTML = `
+
+    <h1>🤍 Pentru tine</h1>
+
+    <img src="poza-ta.jpg" class="final-photo">
+
+    <div class="final-text">
+
+      Prietena ta cea mai bună<br>
+      a fost cerută în căsătorie... 💍
+
+      <br><br>
+
+      Și unul dintre primele lucruri<br>
+      pe care și-a dorit să le faci<br>
+      a fost să afli tu. 🥺
+
+    </div>
+
+  `;
+
+  setInterval(createHeart,400);
+
+}
+
+function createHeart(){
+
+  const heart = document.createElement("div");
+
+  heart.classList.add("heart");
+
+  heart.innerHTML = "🤍";
+
+  heart.style.left = Math.random()*100 + "vw";
+
+  heart.style.bottom = "-20px";
+
+  heart.style.fontSize = (18 + Math.random()*20) + "px";
+
+  document.body.appendChild(heart);
+
+  setTimeout(()=>{
+    heart.remove();
+  },6000);
+
 }
 
 </script>
