@@ -229,7 +229,22 @@ height:220px;
   position:relative;
   z-index:5;
 }
+.question-photo{
 
+  width:100%;
+  height:220px;
+
+  object-fit:cover;
+
+  border-radius:25px;
+
+  margin-bottom:22px;
+
+  border:2px solid rgba(255,255,255,0.2);
+
+  box-shadow:
+    0 0 20px rgba(255,255,255,0.15);
+}
 /* TEXT FINAL */
 
 .final-text{
@@ -405,7 +420,12 @@ function nextQuestion(){
 
   if(current.type==="text"){
 
-    q.innerHTML=current.text;
+   q.innerHTML=`
+  <div>
+    <img src="${current.image}" class="question-photo">
+    <div>${current.text}</div>
+  </div>
+`;
 
     index++;
 
@@ -415,7 +435,9 @@ function nextQuestion(){
 
     q.innerHTML=`
       <div>
-        <div>${current.question}</div>
+       <img src="${current.image}" class="question-photo">
+
+<div>${current.question}</div>
 
         <div class="answers">
           ${current.answers.map((ans,i)=>
