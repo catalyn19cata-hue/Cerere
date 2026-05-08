@@ -122,11 +122,6 @@ h1{
 
 .question-photo{
 
-.p2.jpeg,
-.p4.jpeg{
-  object-fit:contain;
-  background:rgba(0,0,0,0.25);
-}
   
   width:100%;
 
@@ -427,9 +422,10 @@ function showQuestion(){
 
   q.innerHTML=`
 
-   <img 
+<img 
   src="${current.image}" 
-  class="question-photo ${current.image}"
+  class="question-photo"
+  style="object-fit:${current.fit || 'cover'}"
 >
 
     <div class="question-text">
