@@ -433,7 +433,7 @@ function nextQuestion(){
 }
 function checkAnswer(button,index,correct){
 
-  const buttons=
+  const buttons =
     document.querySelectorAll(".answer-btn");
 
   buttons.forEach(btn=>{
@@ -451,9 +451,21 @@ function checkAnswer(button,index,correct){
     buttons[correct].classList.add("correct");
   }
 
-  setTimeout(()=>{
+  /* apare butonul de continuare */
+
+  const continueBtn = document.createElement("button");
+
+  continueBtn.innerText = "Continuă ✨";
+
+  continueBtn.style.marginTop = "20px";
+
+  continueBtn.onclick = () => {
     nextQuestion();
-  },1800);
+  };
+
+  document
+    .querySelector(".answers")
+    .appendChild(continueBtn);
 }
 /* FINAL */
 
