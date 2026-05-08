@@ -311,15 +311,53 @@ for(let i=0;i<80;i++){
 
 const questions=[
 
-"Ți-e dor de toate momentele noastre? 🥺",
+{
+type:"text",
+text:"Ți-e dor de toate momentele noastre? 🥺"
+},
 
-"Ți-e dor de conversațiile care durau până dimineața? ✨",
+{
+type:"quiz",
+question:"Care era momentul nostru preferat? ✨",
+answers:[
+"Plimbările târzii",
+"Conversațiile până dimineața",
+"Filmele random"
+],
+correct:1
+},
 
-"Crezi că unele persoane rămân pentru totdeauna parte din sufletul nostru? 🤍",
+{
+type:"text",
+text:"Crezi că unele persoane rămân pentru totdeauna parte din sufletul nostru? 🤍"
+},
 
-"Te-ai gândit vreodată cât de repede se schimbă viața? 🌸",
+{
+type:"quiz",
+question:"Ce ne făcea speciali? 🌸",
+answers:[
+"Felul în care vorbeam ore întregi",
+"Cadourile",
+"Pozele"
+],
+correct:0
+},
 
-"Și dacă ți-aș spune că s-a întâmplat ceva foarte important...? 💭"
+{
+type:"text",
+text:"Te-ai gândit vreodată cât de repede se schimbă viața? 💭"
+},
+
+{
+type:"quiz",
+question:"Ce crezi că urmează...? 💍",
+answers:[
+"O simplă poveste",
+"Un final trist",
+"O veste importantă"
+],
+correct:2
+}
 
 ];
 
