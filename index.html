@@ -485,7 +485,11 @@ function nextQuestion(){
 
   index++;
 
-  if(index >= questions.length){
+  if(index === questions.length){
+
+    showSpecialMessage();
+
+  }else if(index > questions.length){
 
     showFinal();
 
@@ -495,6 +499,27 @@ function nextQuestion(){
   }
 }
 
+  function showSpecialMessage(){
+
+  document.getElementById("container").innerHTML=`
+
+    <h1>🤍</h1>
+
+    <div class="final-text">
+
+      Ai vre-un scret fta de mine? Eu da! ✨
+
+    </div>
+
+    <button class="continue-btn"
+      onclick="nextQuestion()">
+
+      Continuă
+
+    </button>
+
+  `;
+}
 /* FINAL */
 
 function showFinal(){
