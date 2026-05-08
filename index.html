@@ -126,29 +126,34 @@ h1{
 .question-photo{
 
   width:100%;
-  height:190px;
 
-  object-fit:cover;
+  max-height:170px;
 
-  border-radius:20px;
+  object-fit:contain;
 
-  margin-bottom:18px;
+  border-radius:18px;
+
+  margin-bottom:14px;
 
   border:2px solid rgba(255,255,255,0.2);
 
   box-shadow:
     0 0 20px rgba(255,255,255,0.15);
+
+  background:rgba(255,255,255,0.05);
 }
+
+/* TEXT */
 
 .question-text{
 
-  font-size:23px;
+  font-size:20px;
 
-  line-height:1.4;
+  line-height:1.3;
 
   color:#fff5fc;
 
-  margin-bottom:20px;
+  margin-bottom:16px;
 }
 
 /* RĂSPUNSURI */
@@ -156,18 +161,19 @@ h1{
 .answers{
   display:flex;
   flex-direction:column;
-  gap:12px;
+  gap:10px;
 }
+
 
 .answer-btn{
 
   border:none;
 
-  padding:14px;
+  padding:12px;
 
-  border-radius:16px;
+  border-radius:14px;
 
-  font-size:15px;
+  font-size:14px;
 
   cursor:pointer;
 
@@ -177,7 +183,6 @@ h1{
 
   transition:0.3s;
 }
-
 .answer-btn:hover{
   transform:scale(1.03);
 }
@@ -225,14 +230,16 @@ h1{
 
 .final-photo{
 
-  width:220px;
-  height:220px;
+  width:180px;
+  height:auto;
 
-  object-fit:cover;
+  max-height:180px;
 
-  border-radius:30px;
+  object-fit:contain;
 
-  margin-top:15px;
+  border-radius:26px;
+
+  margin-top:12px;
 
   border:3px solid rgba(255,255,255,0.3);
 
@@ -241,13 +248,14 @@ h1{
     0 0 50px rgba(255,77,196,0.4);
 }
 
+
 .final-text{
 
-  margin-top:22px;
+  margin-top:18px;
 
-  font-size:25px;
+  font-size:22px;
 
-  line-height:1.5;
+  line-height:1.4;
 
   animation:fade 2s;
 }
