@@ -52,9 +52,11 @@ body{
 
   border-radius:50%;
 
-  opacity:0.8;
+  opacity:0.6;
 
-  animation:twinkle 2s infinite alternate;
+  animation:twinkle 3s infinite alternate;
+
+  z-index:0;
 }
 
 @keyframes twinkle{
@@ -66,7 +68,7 @@ body{
 
   to{
     opacity:1;
-    transform:scale(1.8);
+    transform:scale(1.7);
   }
 }
 
@@ -92,6 +94,9 @@ body{
     0 0 60px rgba(0,180,255,0.15);
 
   text-align:center;
+
+  position:relative;
+  z-index:2;
 }
 
 /* TITLU */
@@ -190,6 +195,9 @@ button:hover{
     0 0 50px rgba(255,77,196,0.4);
 
   animation:fade 2s;
+
+  position:relative;
+  z-index:5;
 }
 
 /* TEXT FINAL */
@@ -208,6 +216,9 @@ button:hover{
 
   text-shadow:
     0 0 12px rgba(255,255,255,0.4);
+
+  position:relative;
+  z-index:5;
 }
 
 @keyframes fade{
@@ -229,19 +240,23 @@ button:hover{
 
   position:fixed;
 
-  bottom:-20px;
-
-  color:#ff9de6;
-
-  animation:float 6s linear forwards;
+  color:#ffd6ec;
 
   pointer-events:none;
+
+  animation:float 9s linear forwards;
+
+  z-index:1;
 }
 
 @keyframes float{
 
   from{
     transform:translateY(0);
+    opacity:0;
+  }
+
+  15%{
     opacity:1;
   }
 
@@ -258,7 +273,7 @@ button:hover{
 
 <div class="container">
 
-  <h1>Dor nespus✨</h1>
+  <h1>Dor nespus ✨</h1>
 
   <div id="question">
 
@@ -286,7 +301,7 @@ for(let i=0;i<80;i++){
   star.style.top=Math.random()*100+"vh";
 
   star.style.animationDuration=
-    (1+Math.random()*3)+"s";
+    (2+Math.random()*4)+"s";
 
   document.body.appendChild(star);
 }
@@ -340,16 +355,11 @@ function showFinal(){
       Prietena ta cea mai bună<br>
       a fost cerută în căsătorie... 🤍
 
-      <br><br>
-
-      Și și-a dorit ca tu<br>
-      să afli într-un mod special. 🥺
-
     </div>
 
   `;
 
-  setInterval(createHeart,400);
+  setInterval(createHeart,1800);
 }
 
 /* INIMI */
@@ -362,16 +372,21 @@ function createHeart(){
 
   heart.innerHTML="🤍";
 
+  /* apar de peste tot */
   heart.style.left=Math.random()*100+"vw";
 
+  /* poziții diferite jos */
+  heart.style.bottom=
+    (-20 - Math.random()*120) + "px";
+
   heart.style.fontSize=
-    (18+Math.random()*18)+"px";
+    (16+Math.random()*14)+"px";
 
   document.body.appendChild(heart);
 
   setTimeout(()=>{
     heart.remove();
-  },6000);
+  },9000);
 }
 
 </script>
