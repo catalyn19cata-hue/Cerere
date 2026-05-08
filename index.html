@@ -454,20 +454,6 @@ function checkAnswer(button,index,correct){
 
   /* apare butonul de continuare */
 
-  const continueBtn = document.createElement("button");
-
-  continueBtn.innerText = "Continuă ✨";
-
-  continueBtn.style.marginTop = "20px";
-
-  continueBtn.onclick = () => {
-    nextQuestion();
-  };
-
-  document
-    .querySelector(".answers")
-    .appendChild(continueBtn);
-}
 /* FINAL */
 
 function showFinal(){
