@@ -431,7 +431,30 @@ function nextQuestion(){
     index++;
   }
 }
+function checkAnswer(button,index,correct){
 
+  const buttons=
+    document.querySelectorAll(".answer-btn");
+
+  buttons.forEach(btn=>{
+    btn.disabled=true;
+  });
+
+  if(index===correct){
+
+    button.classList.add("correct");
+
+  }else{
+
+    button.classList.add("wrong");
+
+    buttons[correct].classList.add("correct");
+  }
+
+  setTimeout(()=>{
+    nextQuestion();
+  },1800);
+}
 /* FINAL */
 
 function showFinal(){
