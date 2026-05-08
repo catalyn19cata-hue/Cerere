@@ -367,15 +367,39 @@ function nextQuestion(){
 
   const q=document.getElementById("question");
 
-  if(index < questions.length){
+  if(index >= questions.length){
+    showFinal();
+    return;
+  }
 
-    q.innerHTML=questions[index];
+  const current=questions[index];
+
+  if(current.type==="text"){
+
+    q.innerHTML=current.text;
 
     index++;
 
-  }else{
+  }
 
-    showFinal();
+  else if(current.type==="quiz"){
+
+    q.innerHTML=`
+      <div>
+        <div>${current.question}</div>
+
+        <div class="answers">
+          ${current.answers.map((ans,i)=>
+            `<button class="answer-btn"
+              onclick="checkAnswer(this,${i},${current.correct})">
+              ${ans}
+            </button>`
+          ).join("")}
+        </div>
+      </div>
+    `;
+
+    index++;
   }
 }
 
