@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Pentru tine 🤍</title>
 
 <style>
 
 body{
   margin:0;
-  min-height:100vh;
-  overflow-x:hidden;
-  overflow-y:auto;
+  height:100vh;
+  overflow:hidden;
 
   display:flex;
   justify-content:center;
@@ -46,8 +46,8 @@ body{
 .star{
   position:fixed;
 
-  width:4px;
-  height:4px;
+  width:3px;
+  height:3px;
 
   background:white;
 
@@ -69,7 +69,7 @@ body{
 
   to{
     opacity:1;
-    transform:scale(1.7);
+    transform:scale(1.6);
   }
 }
 
@@ -78,11 +78,11 @@ body{
 .container{
 
   width:90%;
-  max-width:500px;
+  max-width:430px;
 
-  padding:35px 28px;
-margin:40px 0;
-  border-radius:35px;
+  padding:22px;
+
+  border-radius:30px;
 
   background:rgba(255,255,255,0.10);
 
@@ -104,9 +104,9 @@ margin:40px 0;
 
 h1{
 
-  font-size:44px;
+  font-size:34px;
 
-  margin-bottom:30px;
+  margin-bottom:18px;
 
   color:white;
 
@@ -115,19 +115,19 @@ h1{
     0 0 25px #ff4dc4;
 }
 
-/* TEXT */
+/* ÎNTREBARE */
 
 #question{
 
-  min-height:130px;
+  min-height:320px;
 
   display:flex;
   justify-content:center;
   align-items:center;
 
-  font-size:28px;
+  font-size:22px;
 
-  line-height:1.6;
+  line-height:1.4;
 
   color:#fff5fc;
 
@@ -137,19 +137,58 @@ h1{
     0 0 8px rgba(255,255,255,0.4);
 }
 
+/* POZE */
+
+.question-photo{
+
+  width:100%;
+  height:170px;
+
+  object-fit:cover;
+
+  border-radius:20px;
+
+  margin-bottom:15px;
+
+  border:2px solid rgba(255,255,255,0.2);
+
+  box-shadow:
+    0 0 20px rgba(255,255,255,0.15);
+}
+
+.final-photo{
+
+  width:210px;
+  height:210px;
+
+  object-fit:cover;
+
+  border-radius:30px;
+
+  margin-top:20px;
+
+  border:3px solid rgba(255,255,255,0.3);
+
+  box-shadow:
+    0 0 25px rgba(255,255,255,0.25),
+    0 0 50px rgba(255,77,196,0.4);
+
+  animation:fade 2s;
+}
+
 /* BUTON */
 
 button{
 
-  margin-top:20px;
+  margin-top:15px;
 
   border:none;
 
-  padding:18px 35px;
+  padding:15px 30px;
 
-  border-radius:20px;
+  border-radius:18px;
 
-  font-size:18px;
+  font-size:16px;
 
   cursor:pointer;
 
@@ -170,28 +209,37 @@ button{
 
 button:hover{
 
-  transform:scale(1.08);
+  transform:scale(1.05);
 
   box-shadow:
     0 0 25px rgba(255,77,196,0.9);
 }
 
-/* POZA FINALĂ */
-  .answers{
+/* RĂSPUNSURI */
+
+.answers{
   display:flex;
   flex-direction:column;
-  gap:15px;
-  margin-top:25px;
+  gap:10px;
+  margin-top:18px;
 }
 
 .answer-btn{
+
   border:none;
-  padding:15px;
-  border-radius:18px;
-  font-size:17px;
+
+  padding:12px;
+
+  border-radius:16px;
+
+  font-size:15px;
+
   cursor:pointer;
+
   color:white;
+
   background:rgba(255,255,255,0.12);
+
   transition:0.3s;
 }
 
@@ -207,53 +255,15 @@ button:hover{
   background:#ff4d6d !important;
 }
 
-.final-photo{
-
-  width:220px;
-height:220px;
-
-  object-fit:cover;
-
-  border-radius:30px;
-
-  margin-top:25px;
-
-  border:3px solid rgba(255,255,255,0.3);
-
-  box-shadow:
-    0 0 25px rgba(255,255,255,0.25),
-    0 0 50px rgba(255,77,196,0.4);
-
-  animation:fade 2s;
-
-  position:relative;
-  z-index:5;
-}
-.question-photo{
-
-  width:100%;
-  height:220px;
-
-  object-fit:cover;
-
-  border-radius:25px;
-
-  margin-bottom:22px;
-
-  border:2px solid rgba(255,255,255,0.2);
-
-  box-shadow:
-    0 0 20px rgba(255,255,255,0.15);
-}
-/* TEXT FINAL */
+/* FINAL */
 
 .final-text{
 
-  margin-top:30px;
+  margin-top:22px;
 
-  font-size:30px;
+  font-size:26px;
 
-  line-height:1.7;
+  line-height:1.6;
 
   color:white;
 
@@ -261,9 +271,6 @@ height:220px;
 
   text-shadow:
     0 0 12px rgba(255,255,255,0.4);
-
-  position:relative;
-  z-index:5;
 }
 
 @keyframes fade{
@@ -289,7 +296,7 @@ height:220px;
 
   pointer-events:none;
 
-  animation:float 9s linear forwards;
+  animation:float 8s linear forwards;
 
   z-index:10;
 }
@@ -336,7 +343,7 @@ height:220px;
 
 /* STELE */
 
-for(let i=0;i<80;i++){
+for(let i=0;i<70;i++){
 
   const star=document.createElement("div");
 
@@ -357,7 +364,7 @@ const questions=[
 
 {
 type:"text",
-  image:"p3.jpeg",
+image:"p3.jpeg",
 text:"Ți-e dor de toate momentele noastre? 🥺"
 },
 
@@ -372,33 +379,15 @@ answers:[
 correct:1
 },
 
-  
 {
 type:"text",
-  image:"p4.jpeg",
-text:"Crezi că unele persoane rămân pentru totdeauna parte din sufletul nostru? 🤍"
-},
-
-{
-type:"quiz",
-question:"Ce ne făcea speciali? 🌸",
-answers:[
-"Felul în care vorbeam ore întregi",
-"Cadourile",
-"Pozele"
-],
-correct:0
-},
-
-{
-type:"text",
-  image:"p2.jpeg",
+image:"p2.jpeg",
 text:"Te-ai gândit vreodată cât de repede se schimbă viața? 💭"
 },
 
 {
 type:"quiz",
-question:"Ce crezi că urmează...?",
+question:"Ce crezi că urmează...? 🤍",
 answers:[
 "O simplă poveste",
 "Un final trist",
@@ -424,39 +413,50 @@ function nextQuestion(){
 
   if(current.type==="text"){
 
-   q.innerHTML=`
-  <div>
-    <img src="${current.image}" class="question-photo">
-    <div>${current.text}</div>
-  </div>
-`;
+    q.innerHTML=`
+      <div>
+        <img src="${current.image}" class="question-photo">
+
+        <div>${current.text}</div>
+      </div>
+    `;
 
     index++;
-
   }
 
   else if(current.type==="quiz"){
 
     q.innerHTML=`
       <div>
-       <img src="${current.image}" class="question-photo">
 
-<div>${current.question}</div>
+        <div style="margin-bottom:15px;">
+          ${current.question}
+        </div>
 
         <div class="answers">
+
           ${current.answers.map((ans,i)=>
+
             `<button class="answer-btn"
               onclick="checkAnswer(this,${i},${current.correct})">
+
               ${ans}
+
             </button>`
+
           ).join("")}
+
         </div>
+
       </div>
     `;
 
     index++;
   }
 }
+
+/* VERIFICARE */
+
 function checkAnswer(button,index,correct){
 
   const buttons =
@@ -478,8 +478,6 @@ function checkAnswer(button,index,correct){
   }
 }
 
-  /* apare butonul de continuare */
-
 /* FINAL */
 
 function showFinal(){
@@ -499,7 +497,7 @@ function showFinal(){
 
   `;
 
-  setInterval(createHeart,1800);
+  setInterval(createHeart,1400);
 }
 
 /* INIMI */
@@ -512,19 +510,19 @@ function createHeart(){
 
   heart.innerHTML="🤍";
 
-  /* apar de peste tot */
   heart.style.left=Math.random()*100+"vw";
 
-  /* poziții diferite jos */
   heart.style.bottom=
-    (-20 - Math.random()*120) + "px";
+    (-20 - Math.random()*100) + "px";
 
   heart.style.fontSize=
     (16+Math.random()*14)+"px";
 
   document.body.appendChild(heart);
 
-  
+  setTimeout(()=>{
+    heart.remove();
+  },8000);
 }
 
 </script>
