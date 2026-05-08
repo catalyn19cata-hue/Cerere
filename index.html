@@ -10,134 +10,228 @@
 body{
   margin:0;
   height:100vh;
+  overflow:hidden;
+
   display:flex;
   justify-content:center;
   align-items:center;
 
-  background:
-    linear-gradient(180deg,#fff7fb,#ffeef8,#fef6ff);
+  font-family:'Segoe UI',sans-serif;
 
-  font-family: 'Segoe UI', sans-serif;
-  overflow:hidden;
+  background:
+    radial-gradient(circle at top left,
+      rgba(255,120,200,0.35),
+      transparent 35%
+    ),
+
+    radial-gradient(circle at bottom right,
+      rgba(0,180,255,0.30),
+      transparent 40%
+    ),
+
+    linear-gradient(
+      135deg,
+      #12051f,
+      #2d103f,
+      #4f1c5c,
+      #7a2d6d
+    );
+
+  color:white;
 }
+
+/* STELE */
+
+.star{
+  position:fixed;
+
+  width:4px;
+  height:4px;
+
+  background:white;
+
+  border-radius:50%;
+
+  opacity:0.8;
+
+  animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+
+  from{
+    opacity:0.3;
+    transform:scale(1);
+  }
+
+  to{
+    opacity:1;
+    transform:scale(1.8);
+  }
+}
+
+/* CARD */
 
 .container{
 
   width:90%;
-  max-width:550px;
+  max-width:560px;
 
-  background:rgba(255,255,255,0.6);
+  padding:45px 35px;
 
-  backdrop-filter:blur(12px);
+  border-radius:35px;
 
-  border-radius:30px;
+  background:rgba(255,255,255,0.10);
 
-  padding:40px 30px;
+  backdrop-filter:blur(18px);
 
-  text-align:center;
+  border:1px solid rgba(255,255,255,0.2);
 
   box-shadow:
-    0 10px 40px rgba(255,182,193,0.25);
+    0 0 30px rgba(255,120,200,0.25),
+    0 0 60px rgba(0,180,255,0.15);
 
+  text-align:center;
 }
+
+/* TITLU */
 
 h1{
-  color:#d86c9a;
-  font-size:42px;
-  margin-bottom:20px;
+
+  font-size:44px;
+
+  margin-bottom:30px;
+
+  color:white;
+
+  text-shadow:
+    0 0 10px #ff9de6,
+    0 0 25px #ff4dc4;
 }
+
+/* TEXT */
 
 #question{
 
-  font-size:26px;
-  color:#7d5a6b;
-
-  min-height:120px;
+  min-height:130px;
 
   display:flex;
+  justify-content:center;
   align-items:center;
-  justify-content:center;
-
-  line-height:1.5;
-}
-
-.buttons{
-  display:flex;
-  gap:15px;
-  justify-content:center;
-  margin-top:30px;
-}
-
-button{
-
-  border:none;
-  border-radius:18px;
-
-  padding:16px 28px;
-
-  font-size:17px;
-
-  cursor:pointer;
-
-  background:white;
-
-  color:#c45d8d;
-
-  box-shadow:
-    0 5px 20px rgba(255,192,203,0.3);
-
-  transition:0.3s;
-}
-
-button:hover{
-  transform:scale(1.06);
-}
-
-.final-photo{
-
-  width:220px;
-  height:220px;
-
-  object-fit:cover;
-
-  border-radius:25px;
-
-  margin-top:20px;
-
-  box-shadow:
-    0 10px 35px rgba(0,0,0,0.15);
-
-  animation:fade 2s;
-}
-
-.final-text{
-
-  margin-top:25px;
 
   font-size:28px;
 
   line-height:1.6;
 
-  color:#b14f80;
+  color:#fff5fc;
+
+  transition:0.5s;
+
+  text-shadow:
+    0 0 8px rgba(255,255,255,0.4);
+}
+
+/* BUTON */
+
+button{
+
+  margin-top:20px;
+
+  border:none;
+
+  padding:18px 35px;
+
+  border-radius:20px;
+
+  font-size:18px;
+
+  cursor:pointer;
+
+  color:white;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff4dc4,
+      #7a5cff
+    );
+
+  box-shadow:
+    0 0 15px rgba(255,77,196,0.5);
+
+  transition:0.3s;
+}
+
+button:hover{
+
+  transform:scale(1.08);
+
+  box-shadow:
+    0 0 25px rgba(255,77,196,0.9);
+}
+
+/* POZA FINALĂ */
+
+.final-photo{
+
+  width:240px;
+  height:240px;
+
+  object-fit:cover;
+
+  border-radius:30px;
+
+  margin-top:25px;
+
+  border:3px solid rgba(255,255,255,0.3);
+
+  box-shadow:
+    0 0 25px rgba(255,255,255,0.25),
+    0 0 50px rgba(255,77,196,0.4);
 
   animation:fade 2s;
 }
 
+/* TEXT FINAL */
+
+.final-text{
+
+  margin-top:30px;
+
+  font-size:30px;
+
+  line-height:1.7;
+
+  color:white;
+
+  animation:fade 2s;
+
+  text-shadow:
+    0 0 12px rgba(255,255,255,0.4);
+}
+
 @keyframes fade{
+
   from{
     opacity:0;
     transform:translateY(20px);
   }
+
   to{
     opacity:1;
     transform:translateY(0);
   }
 }
 
+/* INIMI */
+
 .heart{
 
   position:fixed;
-  color:#ffc1da;
+
+  bottom:-20px;
+
+  color:#ff9de6;
 
   animation:float 6s linear forwards;
 
@@ -164,33 +258,48 @@ button:hover{
 
 <div class="container">
 
-  <h1>Dor nespus🤍</h1>
+  <h1>Dor nespus✨</h1>
 
   <div id="question">
 
-    Ești pregătită pentru câteva întrebări?
+    Am ceva să-ți spun... 🤍
 
   </div>
 
-  <div class="buttons">
-
-    <button onclick="nextQuestion()">
-      Da 💗
-    </button>
-
-  </div>
+  <button onclick="nextQuestion()">
+    Continuă
+  </button>
 
 </div>
 
 <script>
 
-const questions = [
+/* STELE */
 
-"Ți-e dor de momentele în care vorbeam ore întregi fără să ne plictisim? 🥺",
+for(let i=0;i<80;i++){
 
-"Ți-e dor de toate planurile și visele noastre? ✨",
+  const star=document.createElement("div");
 
-"Crezi că unele persoane rămân pentru totdeauna în sufletul nostru? 🤍",
+  star.classList.add("star");
+
+  star.style.left=Math.random()*100+"vw";
+  star.style.top=Math.random()*100+"vh";
+
+  star.style.animationDuration=
+    (1+Math.random()*3)+"s";
+
+  document.body.appendChild(star);
+}
+
+/* ÎNTREBĂRI */
+
+const questions=[
+
+"Ți-e dor de toate momentele noastre? 🥺",
+
+"Ți-e dor de conversațiile care durau până dimineața? ✨",
+
+"Crezi că unele persoane rămân pentru totdeauna parte din sufletul nostru? 🤍",
 
 "Te-ai gândit vreodată cât de repede se schimbă viața? 🌸",
 
@@ -198,75 +307,71 @@ const questions = [
 
 ];
 
-let index = 0;
+let index=0;
 
 function nextQuestion(){
 
-  const q = document.getElementById("question");
+  const q=document.getElementById("question");
 
   if(index < questions.length){
 
-    q.innerHTML = questions[index];
+    q.innerHTML=questions[index];
 
     index++;
 
   }else{
 
     showFinal();
-
   }
-
 }
+
+/* FINAL */
 
 function showFinal(){
 
-  const container = document.querySelector(".container");
+  document.querySelector(".container").innerHTML=`
 
-  container.innerHTML = `
-
-    <h1>🤍 Pentru tine</h1>
+    <h1>💍</h1>
 
     <img src="poza-ta.jpg" class="final-photo">
 
     <div class="final-text">
 
       Prietena ta cea mai bună<br>
-      a fost cerută în căsătorie... 💍
+      a fost cerută în căsătorie... 🤍
 
       <br><br>
 
-      Și unul dintre primele lucruri<br>
-      pe care și-a dorit să le faci<br>
-      a fost să afli tu. 🥺
+      Și și-a dorit ca tu<br>
+      să afli într-un mod special. 🥺
 
     </div>
 
   `;
 
   setInterval(createHeart,400);
-
 }
+
+/* INIMI */
 
 function createHeart(){
 
-  const heart = document.createElement("div");
+  const heart=document.createElement("div");
 
   heart.classList.add("heart");
 
-  heart.innerHTML = "🤍";
+  heart.innerHTML="🤍";
 
-  heart.style.left = Math.random()*100 + "vw";
+  heart.style.left=Math.random()*100+"vw";
 
-  heart.style.bottom = "-20px";
-
-  heart.style.fontSize = (18 + Math.random()*20) + "px";
+  heart.style.fontSize=
+    (18+Math.random()*18)+"px";
 
   document.body.appendChild(heart);
 
   setTimeout(()=>{
     heart.remove();
   },6000);
-
 }
 
 </script>
