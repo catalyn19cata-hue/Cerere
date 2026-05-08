@@ -8,38 +8,36 @@
 
 <style>
 
-body{
+bbody{
   margin:0;
-
+  min-height:100vh;
 
   display:flex;
   justify-content:center;
- align-items:flex-start;
-padding-top:20px;
-box-sizing:border-box;
-  
+  align-items:flex-start;
+
+  padding-top:20px;
+
+  box-sizing:border-box;
+
   font-family:'Segoe UI',sans-serif;
 
+  overflow:hidden;
+
   background:
-    radial-gradient(circle at top left,
-      rgba(255,120,200,0.35),
-      transparent 35%
-    ),
-    radial-gradient(circle at bottom right,
-      rgba(0,180,255,0.30),
-      transparent 40%
-    ),
-    linear-gradient(
-      135deg,
-      #12051f,
-      #2d103f,
-      #4f1c5c,
-      #7a2d6d
-    );
+  linear-gradient(
+    160deg,
+    #12051f 0%,
+    #24103a 25%,
+    #4a1f5f 55%,
+    #6f2d73 78%,
+    #8f3b88 100%
+  );
+
+  background-attachment:fixed;
 
   color:white;
 }
-
 /* STELE */
 
 .star{
