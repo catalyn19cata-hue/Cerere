@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <title>Pentru tine 🤍</title>
 
@@ -53,7 +53,6 @@ body{
 }
 
 @keyframes twinkle{
-
   from{
     opacity:0.3;
     transform:scale(1);
@@ -72,7 +71,7 @@ body{
   width:90%;
   max-width:420px;
 
-  padding:20px;
+  padding:22px;
 
   border-radius:28px;
 
@@ -107,29 +106,24 @@ h1{
     0 0 25px #ff4dc4;
 }
 
+/* INTRO */
+
+.intro-text{
+  font-size:24px;
+  line-height:1.5;
+  margin:35px 0;
+}
+
 /* ÎNTREBARE */
 
 #question{
-
-  min-height:420px;
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
-
-  font-size:22px;
-
-  line-height:1.4;
-
-  color:#fff5fc;
+  min-height:470px;
 }
-
-/* POZE */
 
 .question-photo{
 
   width:100%;
-  height:180px;
+  height:190px;
 
   object-fit:cover;
 
@@ -143,22 +137,15 @@ h1{
     0 0 20px rgba(255,255,255,0.15);
 }
 
-.final-photo{
+.question-text{
 
-  width:210px;
-  height:210px;
+  font-size:23px;
 
-  object-fit:cover;
+  line-height:1.4;
 
-  border-radius:30px;
+  color:#fff5fc;
 
-  margin-top:20px;
-
-  border:3px solid rgba(255,255,255,0.3);
-
-  box-shadow:
-    0 0 25px rgba(255,255,255,0.25),
-    0 0 50px rgba(255,77,196,0.4);
+  margin-bottom:20px;
 }
 
 /* RĂSPUNSURI */
@@ -166,15 +153,14 @@ h1{
 .answers{
   display:flex;
   flex-direction:column;
-  gap:10px;
-  margin-top:20px;
+  gap:12px;
 }
 
 .answer-btn{
 
   border:none;
 
-  padding:13px;
+  padding:14px;
 
   border-radius:16px;
 
@@ -201,22 +187,66 @@ h1{
   background:#ff4d6d !important;
 }
 
+/* BUTON CONTINUA */
+
+.continue-btn{
+
+  margin-top:22px;
+
+  border:none;
+
+  padding:14px 22px;
+
+  border-radius:18px;
+
+  font-size:16px;
+
+  cursor:pointer;
+
+  color:white;
+
+  background:linear-gradient(
+    135deg,
+    #ff5db1,
+    #9d4dff
+  );
+
+  transition:0.3s;
+}
+
+.continue-btn:hover{
+  transform:scale(1.05);
+}
+
 /* FINAL */
+
+.final-photo{
+
+  width:220px;
+  height:220px;
+
+  object-fit:cover;
+
+  border-radius:30px;
+
+  margin-top:15px;
+
+  border:3px solid rgba(255,255,255,0.3);
+
+  box-shadow:
+    0 0 25px rgba(255,255,255,0.25),
+    0 0 50px rgba(255,77,196,0.4);
+}
 
 .final-text{
 
-  margin-top:20px;
+  margin-top:22px;
 
   font-size:25px;
 
   line-height:1.5;
 
-  color:white;
-
   animation:fade 2s;
-
-  text-shadow:
-    0 0 12px rgba(255,255,255,0.4);
 }
 
 @keyframes fade{
@@ -269,11 +299,17 @@ h1{
 
 <body>
 
-<div class="container">
+<div class="container" id="container">
 
-  <h1>Dor nespus ✨</h1>
+  <h1>🤍</h1>
 
-  <div id="question"></div>
+  <div class="intro-text">
+    Am ceva să-ți spun... ✨
+  </div>
+
+  <button class="continue-btn" onclick="startQuiz()">
+    Continuă
+  </button>
 
 </div>
 
@@ -348,6 +384,21 @@ correct:2
 
 let index=0;
 
+/* START QUIZ */
+
+function startQuiz(){
+
+  document.getElementById("container").innerHTML=`
+
+    <h1>Dor nespus ✨</h1>
+
+    <div id="question"></div>
+
+  `;
+
+  showQuestion();
+}
+
 /* AFIȘARE ÎNTREBARE */
 
 function showQuestion(){
@@ -358,37 +409,35 @@ function showQuestion(){
 
   q.innerHTML=`
 
-    <div>
+    <img src="${current.image}" class="question-photo">
 
-      <img src="${current.image}" class="question-photo">
+    <div class="question-text">
+      ${current.question}
+    </div>
 
-      <div>
-        ${current.question}
-      </div>
+    <div class="answers">
 
-      <div class="answers">
+      ${current.answers.map((ans,i)=>
 
-        ${current.answers.map((ans,i)=>
+        `<button class="answer-btn"
+          onclick="selectAnswer(this,${i},${current.correct})">
 
-          `<button class="answer-btn"
-            onclick="checkAnswer(this,${i},${current.correct})">
+          ${ans}
 
-            ${ans}
+        </button>`
 
-          </button>`
-
-        ).join("")}
-
-      </div>
+      ).join("")}
 
     </div>
+
+    <div id="continueArea"></div>
 
   `;
 }
 
-/* VERIFICARE */
+/* SELECTARE RĂSPUNS */
 
-function checkAnswer(button,indexAnswer,correct){
+function selectAnswer(button,indexAnswer,correct){
 
   const buttons =
     document.querySelectorAll(".answer-btn");
@@ -408,27 +457,39 @@ function checkAnswer(button,indexAnswer,correct){
     buttons[correct].classList.add("correct");
   }
 
-  setTimeout(()=>{
+  document.getElementById("continueArea").innerHTML=`
 
-    index++;
+    <button class="continue-btn"
+      onclick="nextQuestion()">
 
-    if(index >= questions.length){
+      Continuă
 
-      showFinal();
+    </button>
 
-    }else{
+  `;
+}
 
-      showQuestion();
-    }
+/* NEXT */
 
-  },1500);
+function nextQuestion(){
+
+  index++;
+
+  if(index >= questions.length){
+
+    showFinal();
+
+  }else{
+
+    showQuestion();
+  }
 }
 
 /* FINAL */
 
 function showFinal(){
 
-  document.querySelector(".container").innerHTML=`
+  document.getElementById("container").innerHTML=`
 
     <h1>💍</h1>
 
@@ -470,10 +531,6 @@ function createHeart(){
     heart.remove();
   },8000);
 }
-
-/* START */
-
-showQuestion();
 
 </script>
 
